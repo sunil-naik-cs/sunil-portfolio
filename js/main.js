@@ -49,3 +49,25 @@ if (aboutSection) {
         aboutObserver.observe(element);
     });
 }
+
+
+/* =========================
+   SKILLS CARD INTERACTION
+========================= */
+
+document.querySelectorAll(".skill-toggle").forEach((button) => {
+    button.addEventListener("click", () => {
+        const card = button.closest(".skill-card");
+        const details = card.querySelector(".skill-details");
+        const isExpanded = button.getAttribute("aria-expanded") === "true";
+
+        button.setAttribute("aria-expanded", String(!isExpanded));
+        details.hidden = isExpanded;
+
+        button.querySelector("span").textContent =
+            isExpanded ? "＋" : "−";
+
+        button.firstChild.textContent =
+            isExpanded ? "EXPLORE SKILLS " : "SHOW LESS ";
+    });
+});
